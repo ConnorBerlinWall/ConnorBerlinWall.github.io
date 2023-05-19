@@ -20,46 +20,80 @@ var runLevels = function (window) {
     // BEGIN EDITING YOUR CODE HERE
     function createSawBlade(x, y) {
     var hitZoneSize = 25;
-    var damageFromObstacle = 10;
+    var damageFromObstacle = 50;
     var sawBladeHitZone = game.createObstacle(hitZoneSize, damageFromObstacle);
     sawBladeHitZone.x = x;
-    sawBladeHitZone.y = y;
+    sawBladeHitZone.y = groundY;
     game.addGameItem(sawBladeHitZone);
-    var obstacleImage = draw.bitmap("img/Blaze.png");
+    var obstacleImage = draw.bitmap("img/rock.png");
     sawBladeHitZone.addChild(obstacleImage);
-    obstacleImage.x = -x + x;
-    obstacleImage.y = -y + 600;
-    obstacleImage.scaleX = .1;
-    obstacleImage.scaleY = .1;
+    obstacleImage.x = sawBladeHitZone.x - x - 50;
+    obstacleImage.y = -y + 580;
+    obstacleImage.scaleX = 1.5;
+    obstacleImage.scaleY = 1;
   }
-  createSawBlade(500, 625);
-  createSawBlade(600, 640);
-  createSawBlade(700, 610);
+  createSawBlade(500, 600);
+  createSawBlade(600, 600);
+  createSawBlade(700, 600);
   
   function playerCollision () {
     startLevel();
     game.changeIntegrity(-100)
   }
   function projectileCollision() {
-    startLevel();
-    game.increaseScore(100)
+    game.increaseScore(100);
     enemy.fadeOut();
   }
   function createEnemy (x , y) {
   var enemy = game.createGameItem("enemy", 25);
-  var rock = draw.bitmap("img/rock.png")
-  rock.x = x;
-  rock.y = y;
+  // var rock = draw.rect(50, 50, "green")
+  var rock = draw.bitmap("img/Blaze.png")
+  rock.scaleX = .1
+  rock.scaleY = .1
+  rock.x = -25;
+  rock.y = -25;
   enemy.addChild(rock)
-  enemy.x = 400;
-  enemy.y = groundY - 50;
+  enemy.x = x
+  enemy.y = y    
+  game.addGameItem(enemy);
   enemy.velocityX = -1
+  enemy.onPlayerCollision = function () {
+    game.changeIntegrity(-50);
+    enemy.fadeOut();
   }
-createEnemy(400, groundY - 10);
-createEnemy(800, groundY - 100);
+  enemy.onProjectileCollision = function () {
+    game.increaseScore(100);
+    enemy.fadeOut();
+  };
+}
+createEnemy(400, groundY - 50);
+createEnemy(800, groundY - 50);
 createEnemy(1200, groundY - 50)
 
-function createReward () {}; 
+function createReward (x, y) {
+  var pickup = game.createGameItem("enemy", 25);
+  var trophy = draw.bitmap("img/trophy.png");
+  trophy.x = -25
+  trophy.y = -25
+  trophy.scaleX = .1
+  trophy.scaleY = .1
+  pickup.addChild(trophy)
+  pickup.x = x
+  pickup.y = y
+  game.addGameItem(pickup)
+  pickup.velocityX = -3
+  pickup.onPlayerCollision = function () {
+    game.changeIntegrity(25);
+    pickup.fadeOut();
+  }
+  pickup.onProjectileCollision = function () {
+    game.increaseScore(50)
+    pickup.fadeOut()
+  }
+}; 
+createReward(400, groundY - 50)
+createReward(800, groundY - 50)
+createReward(1200, groundY - 50)
 
 function createMarker () {};
   // enemy.onPlayerCollision = playerCollision();
