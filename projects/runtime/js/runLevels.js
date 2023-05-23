@@ -87,22 +87,47 @@ function createReward (x, y) {
     pickup.fadeOut();
   }
   pickup.onProjectileCollision = function () {
-    game.increaseScore(50)
-    pickup.fadeOut()
-  }
+    game.increaseScore(50);
+    pickup.fadeOut();
+  };
 }; 
 createReward(400, groundY - 50)
 createReward(800, groundY - 50)
 createReward(1200, groundY - 50)
 
-function createMarker () {};
+function createMarker (x, y) {
+  var endGoal = game.createGameItem("enemy", 50)
+  var goal = draw.bitmap("img/flag.png")
+  goal.x = -25
+  goal.y = -25
+  goal.scaleX = .1
+  goal.scaleY = .1
+  endGoal.addChild(goal)
+  endGoal.x = x
+  endGoal.y = y
+  game.addGameItem(endGoal)
+  endGoal.velocityX = -1
+  endGoal.onPlayerCollision = function () {
+    game.changeIntegrity(100);
+    endGoal.fadeOut();
+    startLevel();
+  }
+  endGoal.onProjectileCollision = function () {
+    game.increaseScore(50);
+    pickup.fadeOut();
+    startLevel();
+  };
+}; 
+createMarker(1600, groundY - 50)
+;
   // enemy.onPlayerCollision = playerCollision();
   // enemy.onProjectileCollision = projectileCollision();
  
    game.addGameItem(enemy)
      function startLevel() {
       // TODO 13 goes below here
-
+var level = levelData[currentLevel];
+var levelObjects = 
 
 
       //////////////////////////////////////////////
