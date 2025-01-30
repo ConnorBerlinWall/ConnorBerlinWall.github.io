@@ -72,7 +72,7 @@ dataShapes.push(shape)
 
   // TODO 5-a: add a function that handles the bad display type
   function handleBad(data, repeat) {
-    repeat =+ 1
+    repeat += 1
     setBackgroundWithMixed(data, repeat)
     animationDetails.displayType = 3
   }
@@ -81,10 +81,10 @@ dataShapes.push(shape)
   // BUTTON HANDLERS BELOW HERE (3-b, 4-b, 5-b) ///
   /////////////////////////////////////////////////
 
-  function staticDisplay() {
+  function staticDisplay(data) {
     // TODO 3-b: call your handleStatic function
     var currentShape = dataShapes[currentIndex]
-    handleStatic(currentShape.shape)
+    handleStatic(currentShape)
   }
 
   function goodDisplay() {
