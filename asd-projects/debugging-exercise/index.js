@@ -20,7 +20,7 @@ var circleRadius = 10;
 // this gets the whole thing going;
 // it creates a number of circles both in JavaScript and in the HTML of the website
 for (var i = 0; i < maxCircles; i++){
-    var newId = getId[i];
+    var newId = getId(i);
     var newCircle = makeCircle(newId);
     circles.push(newCircle);
     
@@ -134,7 +134,7 @@ function bounceCircle(circle){
     // this bounces off the bottom wall
     else if (circle.y > boardHeight){
         circle.y -= circle.speedY;
-        circle.speedX *= -1;
+        circle.speedY *= -1;
     }
 }
 
