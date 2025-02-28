@@ -16,6 +16,7 @@ var snake = {
 }
 var apple = {
 }
+var score = 0
 // Constant Variables
 var ROWS = 20;
 var COLUMNS = 20;
@@ -360,9 +361,10 @@ function getRandomAvailablePosition() {
     randomPosition.column = Math.floor(Math.random() * COLUMNS);
     randomPosition.row = Math.floor(Math.random() * ROWS);
     spaceIsAvailable = true;
-    for (var i = 0; i <= snake.body.length; i++){
-      if (randomPosition.column === snake.body[i].column && randomPosition.row === snake.body[i].row){
-    spaceIsAvailable = false
+    for (var i = 0; i < snake.body.length; i++){
+      var currentSnakeSquare = snake.body[i];
+      if (randomPosition.column === currentSnakeSquare.column && randomPosition.row === currentSnakeSquare.row){
+        spaceIsAvailable = false
       }
     }
     /*
