@@ -49,14 +49,14 @@ function runProgram(){
   Called in response to events.
   */
   function wallCollision() {
-    if (walker.x + 50 >= $("#board").width()) {
-      walker.x -= walker.speedX
+    if (walker.x + $("#walker").width() >= $("#board").width()) {
+      walker.x = $("#board").width() - $("#walker").width()
     }
     if (walker.x <= 0) {
       walker.x = 0
     }
-    if (walker.y + 50 >= $("#board").height()) {
-      walker.y -= walker.speedY
+    if (walker.y + $("#walker").width() >= $("#board").height()) {
+      walker.y = $("#board").height() - $("#walker").height()
     }
     if (walker.y <= 0) {
       walker.y = 0
