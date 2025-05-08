@@ -28,7 +28,8 @@ async function bubbleSort(array) {
 }
 
 // TODO 3: Implement quickSort
-//determines if the left or right values are bigger than one another, if they aren't it partitions the array and if they are it recurses itself and changes the values of left and right until they are equal
+//determines if the left or right values are bigger than one another
+//if they aren't it partitions the array and if they are it recurses itself and changes the values of left and right until they are equal
 async function quickSort(array, left, right) {
     if(right - left > 0) {
         var index = await partition(array, left, right)

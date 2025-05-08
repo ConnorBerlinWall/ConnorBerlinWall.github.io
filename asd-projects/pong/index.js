@@ -42,6 +42,16 @@ function runProgram(){
   ////////////////////////// HELPER FUNCTIONS ////////////////////////////////////
   ////////////////////////////////////////////////////////////////////////////////
 
+ function ObjectFactory (id){
+  var newObj = {}
+  newObj.id = id
+  newObj.x = parseFloat((id).css("left"))
+  newObj.y = parseFloat((id).css("top"))
+  newObj.speedX = speedX
+  newObj.speedY = speedY
+  newObj.width = $(id).width()
+  newObj.height = $(id).height()
+ }
   
   function endGame() {
     // stop the interval timer
