@@ -29,7 +29,7 @@ function runProgram(){
     UP: 38,
   }
   let interval = setInterval(newFrame, FRAMES_PER_SECOND_INTERVAL);   // execute newFrame every 0.0166 seconds (60 Frames per second)
-  $(document).on('eventType', handleEvent);                          // change 'eventType' to the type of event you want to handle
+        // change 'eventType' to the type of event you want to handle
   $(document).on('keydown', handleKeyDown);//creates a jquery event that detects keydown inputs 
   $(document).on('keyup', handleKeyUp);  //creates a jquery event that detects keyup inputs 
   ////////////////////////////////////////////////////////////////////////////////
@@ -47,7 +47,7 @@ function runProgram(){
     wallCollision(ball)
     wallCollision(leftPaddle)
     wallCollision(rightPaddle)
-    checkScore()
+    // checkScore()
   }
   
   /* 
